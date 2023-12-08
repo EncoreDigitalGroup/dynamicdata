@@ -1,35 +1,29 @@
 {
-    "name": "encoredigitalgroup/package-skeleton",
+    "name": "encoredigitalgroup/dynamicdata",
     "type": "library",
-    "description": "Package Skeleton",
+    "description": "Dynamic Data Fields for Laravel",
     "keywords": [
-        "Encore Digital Group"
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.encoredigitalgroup.com"
-        }
+        "Encore Digital Group",
+        "Dynamic Data Fields"
     ],
     "require": {
         "php": "^8.2",
-        "brainmaestro/composer-git-hooks": "^3.0@alpha",
-        "encoredigitalgroup/common": "^0.11.1",
         "laravel/framework": "^10.0",
         "spatie/laravel-package-tools": "^1.14"
     },
     "require-dev": {
+        "brainmaestro/composer-git-hooks": "^3.0@alpha",
         "tightenco/duster": "^2.6",
         "neronmoon/scriptsdev": "0.1.9"
     },
     "autoload": {
         "psr-4": {
-            "EncoreDigitalGroup\\PackageName\\": "src/"
+            "EncoreDigitalGroup\\DynamicData\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "EncoreDigitalGroup\\PackageName\\Tests\\": "tests/"
+            "EncoreDigitalGroup\\DynamicData\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -46,7 +40,7 @@
         "laravel": {
             "dont-discover": [],
             "providers": [
-                "EncoreDigitalGroup\\PackageName\\ServiceProvider"
+                "EncoreDigitalGroup\\DynamicData\\ServiceProvider"
             ]
         },
         "scripts-dev": {
