@@ -127,19 +127,21 @@ class DynamicData
     public function buildAsArray(): array
     {
         return [
-            'name' => $this->getName(),
-            'type' => $this->getType(),
-            'label' => $this->getLabel(),
-            'value' => $this->getValue(),
-            'source' => [
-                'name' => $this->getSourceName(),
-                'scope' => $this->getSourceScope(),
-            ],
-            'external' => $this->getExternal(),
-            'required' => $this->getRequired(),
-            'encrypted' => [
-                'is' => $this->getIsEncrypted(),
-                'shall' => $this->getShallEncrypt(),
+            $this->getName() => [
+                'name' => $this->getName(),
+                'type' => $this->getType(),
+                'label' => $this->getLabel(),
+                'value' => $this->getValue(),
+                'source' => [
+                    'name' => $this->getSourceName(),
+                    'scope' => $this->getSourceScope(),
+                ],
+                'external' => $this->getExternal(),
+                'required' => $this->getRequired(),
+                'encrypted' => [
+                    'is' => $this->getIsEncrypted(),
+                    'shall' => $this->getShallEncrypt(),
+                ],
             ],
         ];
     }
