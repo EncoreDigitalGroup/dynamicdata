@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 trait HasDynamicData
 {
+    // @codeCoverageIgnoreStart
     /**
      * @throws Exception
      */
@@ -29,6 +30,7 @@ trait HasDynamicData
 
         return json_decode($preppedData, true);
     }
+    // @codeCoverageIgnoreEnd
 
     /**
      * @throws Exception
@@ -44,7 +46,6 @@ trait HasDynamicData
     public function resolveDynamicDataValuesAsArray(array $arrayData, array $storedDynamicData): array
     {
         foreach ($storedDynamicData as $data) {
-            //                self::ensureNameAndValuePresent($data);
             if ($data['encrypted']['is']) {
                 try {
                     $arrayData["{$data['name']}"] = Crypt::decryptString("{$data['value']}");

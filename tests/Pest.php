@@ -13,6 +13,9 @@
 
 // uses(Tests\TestCase::class)->in('Feature');
 //uses(Tests\TestCase::class)->in('Unit');
+use Tests\PackageTestCase;
+
+uses(PackageTestCase::class)->in(__DIR__);
 
 /*
 |--------------------------------------------------------------------------
