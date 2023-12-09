@@ -163,4 +163,9 @@ class DynamicData
     {
         return $this->buildAsCollection();
     }
+
+    public function rebuildForStorage(array $dataToStore, array $dataValuesToEncode): string
+    {
+        return json_encode($this->encodeDynamicDataValues($dataToStore, $dataValuesToEncode));
+    }
 }
