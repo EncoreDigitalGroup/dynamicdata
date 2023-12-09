@@ -4,6 +4,11 @@
          bootstrap="vendor/autoload.php"
          colors="true"
 >
+    <coverage>
+        <report>
+            <html outputDirectory="tests/coverage" highLowerBound="80"/>
+        </report>
+    </coverage>
     <php>
         <env name="APP_KEY" value="base64:kO8lyU6exVlcU6HeMs5BD8yyIlZ61MVCbQBgtzBD77U="/>
     </php>
