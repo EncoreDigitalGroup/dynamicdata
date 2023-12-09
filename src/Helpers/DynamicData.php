@@ -3,7 +3,7 @@
 namespace EncoreDigitalGroup\DynamicData\Helpers;
 
 use EncoreDigitalGroup\DynamicData\Traits\HasDynamicData;
-use Illuminate\Support\Collection;
+use stdClass;
 
 class DynamicData
 {
@@ -148,7 +148,23 @@ class DynamicData
 
     public function buildAsObject(): object
     {
-        return (object) $this->buildAsArray();
+        $Object = new stdClass;
+        $Object->name = $this->getName();
+        $Object->type = $this->getType();
+        $Object->label = $this->getLabel();
+        $Object->value = $this->getValue();
+        $Object->source = [
+            'name' => $this->getSourceName(),
+            'scope' => $this->getSourceScope(),
+        ];
+        $Object->external = $this->getExternal();
+        $Object->required = $this->getRequired();
+        $Object->encrypted = [
+            'is' => $this->getIsEncrypted(),
+            'shall' => $this->getShallEncrypt(),
+        ];
+
+        return $Object;
     }
 
     public function buildAsJson(): string
@@ -156,14 +172,9 @@ class DynamicData
         return json_encode($this->buildAsArray());
     }
 
-    public function buildAsCollection(): Collection
+    public function build(): array
     {
-        return collect($this->buildAsArray());
-    }
-
-    public function build(): Collection
-    {
-        return $this->buildAsCollection();
+        return $this->buildAsArray();
     }
 
     public function rebuildForStorage(array $dataToStore, array $dataValuesToEncode): string

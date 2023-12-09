@@ -41,20 +41,18 @@ trait HasDynamicData
     /**
      * @throws Exception
      */
-    public function resolveDynamicDataValuesAsArray(array $arrayData, mixed $storedDynamicData): array
+    public function resolveDynamicDataValuesAsArray(array $arrayData, array $storedDynamicData): array
     {
-        if (isset($storedDynamicData)) {
-            foreach ($storedDynamicData as $data) {
-                self::ensureNameAndValuePresent($data);
-                if ($data->encrypted->is) {
-                    try {
-                        $arrayData["{$data->name}"] = Crypt::decryptString("{$data->value}");
-                    } catch (Exception $e) {
-                        throw new Exception($e->getMessage());
-                    }
-                } else {
-                    $arrayData["{$data->name}"] = $data->value;
+        foreach ($storedDynamicData as $data) {
+            //                self::ensureNameAndValuePresent($data);
+            if ($data['encrypted']['is']) {
+                try {
+                    $arrayData["{$data['name']}"] = Crypt::decryptString("{$data['value']}");
+                } catch (Exception $e) {
+                    throw new Exception($e->getMessage());
                 }
+            } else {
+                $arrayData["{$data['name']}"] = $data['value'];
             }
         }
 

@@ -5,6 +5,7 @@ namespace EncoreDigitalGroup\DynamicData;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
+// @codeCoverageIgnoreStart
 class ServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
@@ -33,3 +34,4 @@ class ServiceProvider extends PackageServiceProvider
         );
     }
 }
+// @codeCoverageIgnoreEnd

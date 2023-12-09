@@ -13,8 +13,10 @@
     },
     "require-dev": {
         "brainmaestro/composer-git-hooks": "^3.0@alpha",
-        "tightenco/duster": "^2.6",
-        "neronmoon/scriptsdev": "0.1.9"
+        "neronmoon/scriptsdev": "0.1.9",
+        "pestphp/pest": "^2.28",
+        "pestphp/pest-plugin-laravel": "^2.2",
+        "tightenco/duster": "^2.6"
     },
     "autoload": {
         "psr-4": {
@@ -23,10 +25,11 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "EncoreDigitalGroup\\DynamicData\\Tests\\": "tests/"
+            "Tests\\": "tests/"
         }
     },
     "scripts": {
+        "test": "vendor/bin/pest"
     },
     "extra": {
         "hooks": {
