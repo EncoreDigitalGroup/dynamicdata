@@ -9,28 +9,15 @@ use Illuminate\Support\Facades\Log;
 
 trait HasDynamicData
 {
-    // @codeCoverageIgnoreStart
     /**
-     * @throws Exception
+     * @codeCoverageIgnore
      */
-    private static function ensureNameAndValuePresent($data): void
-    {
-        if (! isset($data->name)) {
-            throw new Exception('Missing name property in data object');
-        }
-
-        if (! isset($data->value) && ($data->value != null)) {
-            throw new Exception('Missing value property in data object');
-        }
-    }
-
     public function prepareForResolution($sourceData): array
     {
         $preppedData = json_encode($sourceData);
 
         return json_decode($preppedData, true);
     }
-    // @codeCoverageIgnoreEnd
 
     /**
      * @throws Exception

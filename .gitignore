@@ -49,6 +49,7 @@ Homestead.yaml
 ##################################
 /.phpunit.cache
 .phpunit.result.cache
+tests/coverage
 
 ##################################
 ########  Legacy Laravel  ########

@@ -30,7 +30,7 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/pest",
+        "test": "vendor/bin/pest --coverage --min=80",
         "coverage": "vendor/bin/pest --coverage --min=80"
     },
     "extra": {
