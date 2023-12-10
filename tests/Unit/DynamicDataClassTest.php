@@ -28,6 +28,46 @@ test('Getter and Setter Test', function () {
         ->and($DynamicData->getShallEncrypt())->toBe(true);
 });
 
+test('buildAsJson() returns a string', function () {
+
+    $DynamicData = new DynamicData;
+    $DynamicData->setName('test');
+    $DynamicData->setType('string');
+    $DynamicData->setLabel('Test');
+    $DynamicData->setValue('test');
+    $DynamicData->setSourceName('test');
+    $DynamicData->setSourceScope('test');
+    $DynamicData->setExternal(true);
+    $DynamicData->setRequired(true);
+    $DynamicData->setIsEncrypted(true);
+    $DynamicData->setShallEncrypt(true);
+    $DataValuesToEncode = clone $DynamicData;
+    $DataValuesToEncode = $DataValuesToEncode->build();
+    $String = $DynamicData->buildAsJson([], $DataValuesToEncode);
+
+    expect($String)->toBeString();
+});
+
+test('buildAsObject() returns an object', function () {
+
+    $DynamicData = new DynamicData;
+    $DynamicData->setName('test');
+    $DynamicData->setType('string');
+    $DynamicData->setLabel('Test');
+    $DynamicData->setValue('test');
+    $DynamicData->setSourceName('test');
+    $DynamicData->setSourceScope('test');
+    $DynamicData->setExternal(true);
+    $DynamicData->setRequired(true);
+    $DynamicData->setIsEncrypted(true);
+    $DynamicData->setShallEncrypt(true);
+    $DataValuesToEncode = clone $DynamicData;
+    $DataValuesToEncode = $DataValuesToEncode->build();
+    $Object = $DynamicData->buildAsObject([], $DataValuesToEncode);
+
+    expect($Object)->toBeObject();
+});
+
 test('rebuildForStorage() returns a string', function () {
 
     $DynamicData = new DynamicData;

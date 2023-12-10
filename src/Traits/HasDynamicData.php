@@ -37,7 +37,8 @@ trait HasDynamicData
                 try {
                     $arrayData["{$data['name']}"] = Crypt::decryptString("{$data['value']}");
                 } catch (Exception $e) {
-                    throw new Exception($e->getMessage());
+                    Log::error("Error decrypting value: {$e->getMessage()}");
+                    throw new Exception('Failed to Decrypt String');
                 }
             } else {
                 $arrayData["{$data['name']}"] = $data['value'];
@@ -48,6 +49,9 @@ trait HasDynamicData
         return $arrayData;
     }
 
+    /**
+     * @throws Exception
+     */
     public function encodeDynamicDataValues(array $dataToStore, array $dataValuesToEncode): array
     {
         foreach ($dataToStore as $field => $fieldData) {
@@ -55,10 +59,11 @@ trait HasDynamicData
             if (isset($dataValuesToEncode[$field])) {
                 if ($fieldData['encrypted']['shall'] === true) {
                     try {
-                        $dataToStore[$field]['value'] = Crypt::encryptString($dataValuesToEncode[$field]);
+                        $dataToStore[$field]['value'] = Crypt::encryptString($dataValuesToEncode[$field]['value']);
                         $dataToStore[$field]['encrypted']['is'] = true;
                     } catch (Exception $e) {
                         Log::error("Error encrypting value: {$e->getMessage()}");
+                        throw new Exception('Failed to Encrypt String');
                     }
                 }
             } else {
