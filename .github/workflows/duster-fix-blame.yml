@@ -7,9 +7,10 @@ on:
   # push:
   #    branches: [ master ]
   pull_request:
+  workflow_call:
 
 jobs:
-  duster:
+  Duster:
     runs-on: ubuntu-latest
     permissions:
       contents: write

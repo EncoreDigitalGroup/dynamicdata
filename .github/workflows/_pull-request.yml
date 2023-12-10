@@ -1,0 +1,16 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  Duster:
+    name: Dust
+    uses: ./.github/workflows/duster-fix-blame.yml
+    permissions:
+      contents: write
+  Test:
+    needs: dust
+    name: Run Tests
+    uses: ./.github/workflows/pest.yml
