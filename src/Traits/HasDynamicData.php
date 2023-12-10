@@ -22,7 +22,7 @@ trait HasDynamicData
     /**
      * @throws Exception
      */
-    public function resolveDynamicDataValuesAsCollection(array $arrayData, mixed $storedDynamicData): Collection
+    public function resolveDynamicDataValuesAsCollection(array $arrayData, array $storedDynamicData): Collection
     {
         return collect($this->resolveDynamicDataValuesAsArray($arrayData, $storedDynamicData));
     }
@@ -48,23 +48,21 @@ trait HasDynamicData
         return $arrayData;
     }
 
-    public function encodeDynamicDataValues(mixed $dataToStore, array $dataValuesToEncode): array
+    public function encodeDynamicDataValues(array $dataToStore, array $dataValuesToEncode): array
     {
-        if (isset($dataToStore)) {
-            foreach ($dataToStore as $field => $fieldData) {
-                // Only overwrite the 'value' field in the provided $data
-                if (isset($dataValuesToEncode[$field])) {
-                    if ($fieldData['encrypted']['shall'] === true) {
-                        try {
-                            $dataToStore[$field]['value'] = Crypt::encryptString($dataValuesToEncode[$field]);
-                            $dataToStore[$field]['encrypted']['is'] = true;
-                        } catch (Exception $e) {
-                            Log::error("Error encrypting value: {$e->getMessage()}");
-                        }
+        foreach ($dataToStore as $field => $fieldData) {
+            // Only overwrite the 'value' field in the provided $data
+            if (isset($dataValuesToEncode[$field])) {
+                if ($fieldData['encrypted']['shall'] === true) {
+                    try {
+                        $dataToStore[$field]['value'] = Crypt::encryptString($dataValuesToEncode[$field]);
+                        $dataToStore[$field]['encrypted']['is'] = true;
+                    } catch (Exception $e) {
+                        Log::error("Error encrypting value: {$e->getMessage()}");
                     }
-                } else {
-                    $dataToStore[$field]['value'] = null;
                 }
+            } else {
+                $dataToStore[$field]['value'] = null;
             }
         }
 

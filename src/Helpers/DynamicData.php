@@ -34,7 +34,7 @@ class DynamicData
         return $this->name;
     }
 
-    public function setType(mixed $type): void
+    public function setType(mixed $type = null): void
     {
         $this->type = $type;
     }
@@ -54,7 +54,7 @@ class DynamicData
         return $this->label;
     }
 
-    public function setValue(mixed $value): void
+    public function setValue(mixed $value = null): void
     {
         $this->value = $value;
     }
@@ -64,7 +64,7 @@ class DynamicData
         return $this->value;
     }
 
-    public function setSourceName(string $name): void
+    public function setSourceName(string $name = null): void
     {
         $this->source['name'] = $name;
     }
@@ -74,7 +74,7 @@ class DynamicData
         return $this->source['name'];
     }
 
-    public function setSourceScope(string $scope): void
+    public function setSourceScope(string $scope = null): void
     {
         $this->source['scope'] = $scope;
     }
