@@ -29,9 +29,9 @@ class DynamicData
         $this->name = $name;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
-        return $this->name;
+        return $this->name ?? null;
     }
 
     public function setType(mixed $type = null): void
@@ -41,7 +41,7 @@ class DynamicData
 
     public function getType(): mixed
     {
-        return $this->type;
+        return $this->type ?? null;
     }
 
     public function setLabel(string $label): void
@@ -49,9 +49,9 @@ class DynamicData
         $this->label = $label;
     }
 
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
-        return $this->label;
+        return $this->label ?? null;
     }
 
     public function setValue(mixed $value = null): void
@@ -61,7 +61,7 @@ class DynamicData
 
     public function getValue(): mixed
     {
-        return $this->value;
+        return $this->value ?? null;
     }
 
     public function setSourceName(string $name = null): void
@@ -69,9 +69,9 @@ class DynamicData
         $this->source['name'] = $name;
     }
 
-    public function getSourceName(): string
+    public function getSourceName(): ?string
     {
-        return $this->source['name'];
+        return $this->source['name'] ?? null;
     }
 
     public function setSourceScope(string $scope = null): void
@@ -79,9 +79,9 @@ class DynamicData
         $this->source['scope'] = $scope;
     }
 
-    public function getSourceScope(): string
+    public function getSourceScope(): ?string
     {
-        return $this->source['scope'];
+        return $this->source['scope'] ?? null;
     }
 
     public function setExternal(bool $external = true): void

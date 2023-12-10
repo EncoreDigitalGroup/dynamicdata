@@ -73,29 +73,31 @@ test('encodeDynamicDataValues() returns an array', function () {
     $DynamicData->setRequired(true);
     $DynamicData->setIsEncrypted(false);
     $DynamicData->setShallEncrypt(false);
-    $dataValuesToEncode = $DynamicData->build();
+    $dataToStore = $DynamicData->build();
 
-    $dataToStore = [
-        'test' => [
-            'name' => 'test',
-            'type' => 'string',
-            'label' => 'Test',
-            'value' => 'test',
-            'source' => [
-                'name' => 'test',
-                'scope' => 'test',
-            ],
-            'external' => true,
-            'required' => true,
-            'encrypted' => [
-                'is' => false,
-                'shall' => true,
-            ],
-        ],
-    ];
+    $dataValuesToEncode['test'] = 'noodles';
 
     $Resolve = $DynamicData->encodeDynamicDataValues($dataToStore, $dataValuesToEncode);
     expect($Resolve)->toBeArray();
+});
+
+test('Test Field Changed Value', function () {
+    $DynamicData = new DynamicData;
+    $DynamicData->setName('test');
+    $DynamicData->setType('string');
+    $DynamicData->setLabel('Test');
+    $DynamicData->setValue('test');
+    $DynamicData->setSourceName('test');
+    $DynamicData->setSourceScope('test');
+    $DynamicData->setExternal(true);
+    $DynamicData->setRequired(true);
+    $DynamicData->setIsEncrypted(false);
+    $DynamicData->setShallEncrypt(false);
+    $dataToStore = $DynamicData->build();
+    $dataValuesToEncode['test'] = 'noodles';
+
+    $Resolve = $DynamicData->encodeDynamicDataValues($dataToStore, $dataValuesToEncode);
+    expect($Resolve['test']['value'])->toBe('noodles');
 });
 
 test('encodeDynamicDataValues() fails to encrypt', function () {
@@ -150,11 +152,32 @@ test('encodeDynamicDataValues() returns value as null', function () {
             'required' => true,
             'encrypted' => [
                 'is' => false,
-                'shall' => true,
+                'shall' => false,
+            ],
+        ],
+        'test2' => [
+            'name' => 'test2',
+            'type' => 'string',
+            'label' => 'Test',
+            'value' => 'test',
+            'source' => [
+                'name' => 'test',
+                'scope' => 'test',
+            ],
+            'external' => true,
+            'required' => true,
+            'encrypted' => [
+                'is' => false,
+                'shall' => false,
             ],
         ],
     ];
 
-    $Resolve = $DynamicData->encodeDynamicDataValues($dataToStore, []);
+    $dataValuesToEncode = [
+        'test' => null,
+    ];
+
+    $Resolve = $DynamicData->encodeDynamicDataValues($dataToStore, $dataValuesToEncode);
+    //    dd($Resolve);
     expect($Resolve['test']['value'])->toBeNull();
 });
