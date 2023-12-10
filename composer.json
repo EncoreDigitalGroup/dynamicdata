@@ -6,6 +6,7 @@
         "Encore Digital Group",
         "Dynamic Data Fields"
     ],
+    "license": "MIT",
     "require": {
         "php": "^8.2",
         "laravel/framework": "^10.0",
