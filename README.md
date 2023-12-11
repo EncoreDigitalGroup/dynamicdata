@@ -7,19 +7,62 @@ This is useful for when you need to store user defined information in a standard
 composer require encoredigitalgroup/dynamicdata
 ```
 
-## Overview
+## Creating a new Dynamic Data Object
+Let's create a Dynamic Data Object for someone's favorite TV Show
+```php
+<?php
+
+use EncoreDigitalGroup\DynamicData\Helpers\DynamicData
+
+$ddo = new DynamicData()
+
+$ddo->setName('favoriteTvShow');
+$ddo->setType('string');
+$ddo->setLabel('Favorite TV Show');
+$ddo->setValue('Suits');
+$ddo->setExternal();
+$ddo->setRequired(false);
+$ddo->setShallEncrypt(false);
+
+//Build the Object as an Array
+$ddo->buildAsArray();
+//or
+$ddo->build(); //build() is a wrapper for buildAsArray()
+
+//Build the Object as a JSON String
+$ddo->buildAsJson() //buildAsJson() is a wrapper for buildAsArray() that also runs json_encode() prior to returning the encoding JSON String
+```
+In the above example, we did not utilize every method to set every field, such as `setIsEncrypted`, as the default value of `setIsEncrypted` is `false`. We also instructed `DynamicData` not to encrypt the value supplied to `setValue`.
+As you would expect, any optional field that is not defined on the `DynamicData()` object, will be set to `null` when any `build()` method is called.
+
+## Field Information
+|Field Name     |Required|Default Value|
+|---            |---     |---          |
+|Name           |✅     |              |
+|Type  	        |❌     |`null `       |
+|Label 	        |✅     |              |
+|Value 	        |❌     |`null`        |
+|Source.Name    |❌     |`null`        |
+|Source.Scope 	|❌     |`null`        |
+|External     	|❌     |`true`        |
+|Required 	    |❌     |`false`       |
+|Excrypted.Is 	|❌     |`false`       |
+|Encrypted.Shall|❌     |`false`       |
+
+
+## Dynamic Data JSON Structure
 Here is an example of what a dynamic data field looks like:
 
 ```json
 {
   "your_custom_field": {
     "name": "string (required)",
-    "type": "string",
+    "type": "string|null",
     "label": "string (required)",
     "value": "string|null",
     "source": {
-      "name": "mixed",
-      "scope": "mixed"
+      "name": "mixed|null",
+      "scope": "mixed|null"
     },
     "external": "bool (required)",
     "required": "bool (required)",
