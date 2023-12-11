@@ -15,9 +15,7 @@ trait HasDynamicData
      */
     public function prepareForResolution($sourceData): array
     {
-        $preppedData = json_encode($sourceData);
-
-        return json_decode($preppedData, true);
+        return json_decode($sourceData, true);
     }
 
     /**
