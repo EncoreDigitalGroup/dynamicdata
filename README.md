@@ -56,19 +56,19 @@ Here is an example of what a dynamic data field looks like:
 ```json
 {
   "your_custom_field": {
-    "name": "string (required)",
-    "type": "string|null",
-    "label": "string (required)",
-    "value": "string|null",
+    "name": "your_custom_field",
+    "type": null,
+    "label": "Favorite TV Show",
+    "value": "Suits",
     "source": {
-      "name": "mixed|null",
-      "scope": "mixed|null"
+      "name": null,
+      "scope": null
     },
-    "external": "bool (required)",
-    "required": "bool (required)",
+    "external": true,
+    "required": false,
     "encrypted": {
-      "is": "bool (required)",
-      "shall": "bool (required)"
+      "is": false,
+      "shall": false
     }
   }
 }
