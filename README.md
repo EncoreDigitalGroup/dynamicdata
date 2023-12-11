@@ -16,7 +16,7 @@ use EncoreDigitalGroup\DynamicData\Helpers\DynamicData
 
 $ddo = new DynamicData()
 
-$ddo->setName('favoriteTvShow');
+$ddo->setName('your_custom_field');
 $ddo->setType('string');
 $ddo->setLabel('Favorite TV Show');
 $ddo->setValue('Suits');
