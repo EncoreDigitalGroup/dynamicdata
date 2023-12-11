@@ -50,24 +50,27 @@ trait HasDynamicData
 
     /**
      * @throws Exception
+     *
      * @codeCoverageIgnore
      */
     public function resolveDynamicDataValues(array $arrayData, array $storedDynamicData): array
     {
-       return $this->resolveDynamicDataValuesAsArray($arrayData, $storedDynamicData);
-    }
-
-     /**
-     * @throws Exception
-     * @codeCoverageIgnore
-     */
-    public function decodeDynamicDataValues(array $arrayData, array $storedDynamicData): array
-    {
-       return $this->resolveDynamicDataValuesAsArray($arrayData, $storedDynamicData);
+        return $this->resolveDynamicDataValuesAsArray($arrayData, $storedDynamicData);
     }
 
     /**
      * @throws Exception
+     *
+     * @codeCoverageIgnore
+     */
+    public function decodeDynamicDataValues(array $arrayData, array $storedDynamicData): array
+    {
+        return $this->resolveDynamicDataValuesAsArray($arrayData, $storedDynamicData);
+    }
+
+    /**
+     * @throws Exception
+     *
      * @codeCoverageIgnore
      */
     public function encodeDynamicDataValues(array $dataToStore, array $dataValuesToEncode): array
