@@ -7,10 +7,10 @@ on:
 jobs:
   Dust:
     name: Duster
-    uses: ./.github/workflows/duster-fix-blame.yml
+    uses: ./.github/workflows/duster-fix.yml
     permissions:
       contents: write
   Test:
-    needs: dust
+    needs: Duster
     name: Run Tests
     uses: ./.github/workflows/pest.yml
