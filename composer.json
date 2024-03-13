@@ -41,14 +41,9 @@
             ]
         },
         "scripts-dev": {
-            "cghooks": "vendor/bin/cghooks",
             "format": "vendor/bin/duster fix",
-            "post-update-cmd": [
-                "@format"
-            ],
-            "post-autoload-dump": [
-                "@cghooks update"
-            ]
+            "post-update-cmd": [],
+            "post-autoload-dump": []
         }
     },
     "config": {
