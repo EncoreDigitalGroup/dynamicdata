@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/skeleton-package.iml" filepath="$PROJECT_DIR$/.idea/skeleton-package.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/dynamicdata.iml" filepath="$PROJECT_DIR$/.idea/dynamicdata.iml" />
     </modules>
   </component>
 </project>
