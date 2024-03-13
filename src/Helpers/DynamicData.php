@@ -64,7 +64,7 @@ class DynamicData
         return $this->value ?? null;
     }
 
-    public function setSourceName(string $name = null): void
+    public function setSourceName(?string $name = null): void
     {
         $this->source['name'] = $name;
     }
@@ -74,7 +74,7 @@ class DynamicData
         return $this->source['name'] ?? null;
     }
 
-    public function setSourceScope(string $scope = null): void
+    public function setSourceScope(?string $scope = null): void
     {
         $this->source['scope'] = $scope;
     }
