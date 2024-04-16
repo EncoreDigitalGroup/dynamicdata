@@ -1,0 +1,16 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  Duster:
+    name: Duster
+    uses: EncoreDigitalGroup/.github/.github/workflows/dusterFixBlame.yml@latest
+    permissions:
+      contents: write
+  Test:
+    needs: Duster
+    name: Run Tests
+    uses: EncoreDigitalGroup/.github/.github/workflows/pest.yml@latest
