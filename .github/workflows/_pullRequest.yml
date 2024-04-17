@@ -7,7 +7,7 @@ on:
 jobs:
   Duster:
     name: Duster
-    uses: EncoreDigitalGroup/.github/.github/workflows/dusterFixBlame.yml@latest
+    uses: EncoreDigitalGroup/.github/.github/workflows/dusterFixBlame.yml@v1
     permissions:
       contents: write
   Test:

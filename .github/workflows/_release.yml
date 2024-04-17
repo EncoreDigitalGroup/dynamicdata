@@ -10,7 +10,7 @@ on:
 jobs:
   CreateRelease:
     name: Create Release
-    uses: EncoreDigitalGroup/.github/.github/workflows/createRelease.yml@latest
+    uses: EncoreDigitalGroup/.github/.github/workflows/createRelease.yml@v1
     with:
       token: ${{ secrets.GITHUB_TOKEN }}
       generate_release_notes: true
